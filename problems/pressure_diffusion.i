@@ -19,10 +19,26 @@
   []
 []
 
+[AuxVariables]
+  [velocity]
+    order = CONSTANT # Lin. Lagrange variable used for pressure, velocity will be constant.
+    family = MONOMIAL_VEC
+  []
+[]
+
 [Kernels]
   [diffusion]
     type = DarcyPressure # Zero-gravity, divergence-free form of Darcy's law
     variable = pressure # Operate on the "pressure" variable from above
+  []
+[]
+
+[AuxKernels]
+  [velocity]
+    type = DarcyVelocity
+    variable = velocity
+    pressure = pressure 
+    execute_on = TIMESTEP_END
   []
 []
 
