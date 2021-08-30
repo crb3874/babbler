@@ -16,6 +16,6 @@ protected:
     virtual ADRealVectorValue precomputeQpResidual() override;
     
     // Variable storing physical constants (k, mu) -- given by inputs. Written by constructor.
-    const Real & _permeability;
-    const Real & _viscosity;
+    const ADMaterialProperty<Real> & _permeability;
+    const ADMaterialProperty<Real> & _viscosity;
 };
